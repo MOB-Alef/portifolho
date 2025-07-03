@@ -1,13 +1,15 @@
 {% extends 'base.html' %}
+{% load static %}
 {% block page_content %}
 <h1>{{ projeto.titulo }}</h1>
 
 <div class="row">
     <div class="col-md-8">
-        {% if  projeto.imagem %}
-            <img src="{{ projeto.imagem.url }}" alt="{{ projeto.titulo }}" class="img-fluid">
+        {% if projeto.imagem %}
+            <img src="{{ projeto.imagem.url }}" alt="Imagem do projeto {{ projeto.titulo }}" class="img-fluid">
+        {% else %}
+            <img src="{% static 'img/placeholder.png' %}" alt="Sem imagem" class="img-fluid">
         {% endif %}
-        {}
         <h5>Descrição do projeto:</h5>
         <p>{{ projeto.descricao }}</p>
     </div>
