@@ -1,10 +1,22 @@
-from django.shortcuts import render
+from django.shortcuts import render 
+from .models import Projeto, Postagem
 
-# Create your views here.
+def blog_index(request):
+    postagens= Postagem.objects.all()
 
-# blog/views.py
+    context = {
+        'postagem': postagens,
+    }
+    postagens = Postagem.objects.all()
+    return render(request, 'blog/index.html', context)
 
-from django.http import HttpResponse
+def blog_detalhe(categoria, request):
+    Postagens = Postagem.objects.filter(
+        categorias_name_contains=categoria 
+    ).order_by('-criado_em')
 
-def index(request):
-    return HttpResponse("<h1>Bem-vindo ao Blog!</h1>")
+    context = {
+        'postagens': Postagens,
+        'categorias': categoria,
+    }
+    return render(request, 'blog/detalhe.html', context)

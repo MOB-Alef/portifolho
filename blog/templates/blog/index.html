@@ -1,0 +1,22 @@
+{%extends 'base.html'%}
+
+{%block page_content %}
+    {% block post %}
+        {%for postagem in postagem%}
+            <h3>
+                <a href="{%url blog.detalhe postagem.pk%}">
+                    {{ postagem.titulo }}
+                </a>
+            </h3>
+            <small>
+                {{ postagem.criado_em.date}} | Categoria:
+                {% for categoria in postagem.categorias.all %}
+                    <a href="{% url 'blog.categoria' categoria.slug %}">
+                        {{ categoria.nome }}
+                    </a>
+                {% endfor %}
+            </small>
+            <p>{{ postagem.corpo | slice '400' }}...</p>
+        {% endfor %}
+    {% endblock post %}
+{% endblock page_content %}
