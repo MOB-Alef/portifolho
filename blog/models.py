@@ -28,7 +28,14 @@ class Comentario(models.Model):
     autor = models.CharField(max_length=60, verbose_name='Autor')
     corpo = models.TextField(verbose_name='Comentário')
     criado_em = models.DateTimeField(auto_now_add=True, verbose_name='Criado em')
-    postagem = models.ForeignKey(Postagem, on_delete=models.CASCADE, related_name='comentarios', verbose_name='Postagem')
+    postagem = models.ForeignKey(
+        'Postagem',
+        on_delete=models.CASCADE,
+        related_name='comentarios',
+        verbose_name='Postagem',
+        null=True,  # Permite nulo temporariamente
+        blank=True
+    )
 
     class Meta:
         verbose_name = 'Comentário'
