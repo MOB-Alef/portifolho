@@ -8,7 +8,8 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/projetos/', permanent=False)),  # Redireciona a raiz para /projetos/
     path('admin/', admin.site.urls),
     path('projetos/', include('projetos.urls')),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('blog/', include('blog.urls')),
+
 ]
 
 if settings.DEBUG:

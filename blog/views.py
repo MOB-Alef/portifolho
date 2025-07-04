@@ -1,5 +1,5 @@
 from django.shortcuts import render 
-from .models import Projeto, Postagem
+from .models import Postagem , Categoria, Cometario
 
 def blog_index(request):
     postagens= Postagem.objects.all()
@@ -19,4 +19,15 @@ def blog_detalhe(categoria, request):
         'postagens': Postagens,
         'categorias': categoria,
     }
+    return render(request, 'blog/categoria.html', context)
+
+def blog_detalhe(request, pk):
+    postagem = Postagem.objects.get(pk=pk)
+    cometarios = Cometario.objects.filter(postagem=postagem)
+    
+    context = {
+        'postagem': postagem,
+        'comentarios': cometarios,
+    }
     return render(request, 'blog/detalhe.html', context)
+

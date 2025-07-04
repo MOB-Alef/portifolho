@@ -1,5 +1,18 @@
 {%extends 'base.html'%}
 
+{% block page_title %}
+<h2>Postagem do blog</h2>
+{% endblock page_title %}
+
+{% block page_header %}
+    <h1>Blog</h1>
+    <p>Bem-vindo ao nosso blog! Aqui você encontrará as últimas novidades e artigos interessantes.</p>
+{% endblock page_header %}
+
+{% block sidebar %}
+    {% include 'blog/sidebar.html' %}
+{% endblock sidebar %}
+
 {%block page_content %}
     {% block post %}
         {%for postagem in postagem%}

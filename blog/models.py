@@ -24,7 +24,7 @@ class Postagem(models.Model):
     def __str__(self):
         return self.titulo
 
-class Comentario(models.Model):
+class Cometario(models.Model):
     autor = models.CharField(max_length=60, verbose_name='Autor')
     corpo = models.TextField(verbose_name='Comentário')
     criado_em = models.DateTimeField(auto_now_add=True, verbose_name='Criado em')

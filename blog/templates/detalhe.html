@@ -1,0 +1,15 @@
+{% block page_title %}
+<h2>{{ postagem.titulo }}</h2>
+{% endblock page_title %}
+
+{% block page_content %}
+<small>
+    {{ postagem.criado_em.date }} | Categoria:
+    {% for categoria in postagem.categorias.all %}
+    <a  href="{% url 'blog.categoria' categoria.slug %}">
+        {{ categoria.nome }}
+    </a>
+    {% endfor %}       
+</small>
+<p>{{ postagem.corpo | linebreaks }}</p>
+{% endblock page_content %}
