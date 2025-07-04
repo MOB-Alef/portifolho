@@ -1,4 +1,4 @@
-{%extends 'base.html'%}
+{% extends 'blog_base.html' %}
 
 {% block page_title %}
 <h2>Postagem do blog</h2>
@@ -13,23 +13,23 @@
     {% include 'blog/sidebar.html' %}
 {% endblock sidebar %}
 
-{%block page_content %}
+{% block page_content %}
     {% block post %}
-        {%for postagem in postagem%}
+        {% for post in postagem %}
             <h3>
-                <a href="{%url blog.detalhe postagem.pk%}">
-                    {{ postagem.titulo }}
+                <a href="{% url 'blog.detalhe' post.pk %}">
+                    {{ post.titulo }}
                 </a>
             </h3>
             <small>
-                {{ postagem.criado_em.date}} | Categoria:
-                {% for categoria in postagem.categorias.all %}
+                {{ post.criado_em|date:"d/m/Y" }} | Categoria:
+                {% for categoria in post.categorias.all %}
                     <a href="{% url 'blog.categoria' categoria.slug %}">
                         {{ categoria.nome }}
                     </a>
                 {% endfor %}
             </small>
-            <p>{{ postagem.corpo | slice '400' }}...</p>
+            <p>{{ post.corpo|slice:":400" }}...</p>
         {% endfor %}
     {% endblock post %}
 {% endblock page_content %}
