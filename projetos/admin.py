@@ -2,7 +2,7 @@ from django.contrib import admin
 from .models import Projeto
 
 class ProjetoAdmin(admin.ModelAdmin):
-    list_display = ('titulo_upper', 'tecnologia', 'descricao')
+    list_display = ('titulo_upper', 'tecnologia', 'descricao', 'publicado', 'imagem')
     list_filter = ('tecnologia',)
     ordering = ('tecnologia',)
     search_fields = ('titulo',)
