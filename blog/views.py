@@ -47,3 +47,5 @@ def blog_detalhe(request, pk):
     }
     return render(request, 'blog/detalhe.html', context)
 
+
+
